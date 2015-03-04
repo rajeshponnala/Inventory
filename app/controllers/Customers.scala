@@ -19,7 +19,7 @@ object Customers extends Controller {
   }
 
   def postCustomer = Action(parse.json) { request =>
-    val result = Insert(request.body.as[CustomersRow])
+    val result = create(request.body.as[CustomersRow])
     result.map(i => Ok(i.toString)).getOrElse(InternalServerError("Error in creating"))
    }
 }
